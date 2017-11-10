@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Original template layout done by: Maria Luiza Linhares Dantas
+%
+% This is an example of a very complete CV using the 'moderncv' package
+% and the 'timeline' package. For more information on those, please
+% access:
+% https://www.ctan.org/tex-archive/macros/latex/contrib/moderntimeline
+% https://www.ctan.org/tex-archive/macros/latex/contrib/moderncv
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper, 10.5pt, sans]{moderncv}
+
+\usepackage[utf8]{inputenc}
+\usepackage[textwidth=7.5in, textheight=10in]{geometry}    % Width of the entire CV
+
+\usepackage{moderntimeline}
+
+\usepackage{color, graphicx}
+\tlmaxdates{2010}{2018}              % Beggining and start of your timeline
+\tlsetnotshadedfraction{0.2}
+
+\input{pre/style}
+
+\input{pre/defs}
+
+\input{pre/personal_info}
+
+\begin{document}
+
+\makecvtitle
+
+\vspace*{-35pt}
+
+\section{Education}
+
+\input{education/phd}
+
+\input{education/masters}
+
+\input{education/undergrad}
+
+\vspace{-10pt}
+\section{Work Experience}
+
+\input{work/metamarkets.tex}
+\vspace{-10pt}
+\vspace{-5pt}
+
+\input{work/gates}
+% \vspace{-5pt}
+
+\input{work/darpa}
+% \vspace{-10pt}
+
+\input{work/purdue_ta}
+
+\input{work/hadley_ta}
+  % \vspace{-10pt} % for lack of content
+  % \vspace{-5pt}
+
+\input{work/novartis}
+\vspace{-5pt}
+
+
+\section{Publications}
+
+\input{publication/lmmpar}
+
+\input{publication/boxland}
+
+\input{publication/generalized_pairs_plot}
+
+\newpage
+
+
+\section{R Packages}
+
+\input{pkg/ggally}
+
+\input{pkg/autocogs}
+
+\input{pkg/gqlr}
+
+\input{pkg/trelliscopejs}
+
+\input{pkg/packagedocs}
+
+\input{pkg/rbokeh}
+
+\section{Service}
+
+\input{service/r4ds}
+
+\input{service/gso}
+
+\input{service/stat_mentor}
+
+
+\vspace{-5pt}
+\section{Extra}
+
+\vspace{-5pt}
+\input{extra/languages}
+\input{extra/systems}
+
+\end{document}
