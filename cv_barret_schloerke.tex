@@ -1,114 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Original template layout done by: Maria Luiza Linhares Dantas
-%
-% This is an example of a very complete CV using the 'moderncv' package
-% and the 'timeline' package. For more information on those, please
-% access:
-% https://www.ctan.org/tex-archive/macros/latex/contrib/moderntimeline
-% https://www.ctan.org/tex-archive/macros/latex/contrib/moderncv
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[10.5pt, sans]{moderncv}
-\moderncvstyle{classic}
-\moderncvcolor{burgundy}
+\documentclass[letterpaper, 11pt, sans]{moderncv}
+
 \usepackage[utf8]{inputenc}
-\usepackage[scale=0.89]{geometry}    % Width of the entire CV
-\setlength{\hintscolumnwidth}{2.5cm} % Width of the timeline on your left
-\usepackage{pdfpages/pdfpages}
-% \usepackage{moderntimeline/moderntimeline}
+\usepackage[textwidth=7.5in, textheight=10in]{geometry}    % Width of the entire CV
+
 \usepackage{moderntimeline}
-\tlenablemonths
-\usepackage{xpatch/xpatch}
+
 \usepackage{color, graphicx}
-\tlmaxdates{2010}{2018}              % Beggining and start of your timeline
+\tlmaxdates{2006}{2018}              % Beggining and start of your timeline
 \tlsetnotshadedfraction{0.2}
 
-\renewcommand*{\cventry}[7][.25em]{%
-  \cvitem[#1]{#2}{%
-  %     {\bfseries#3}%
-    \ifthenelse{\equal{#3}{}}{}{{\bfseries#3}}%
-    %     \ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
-    \ifthenelse{\equal{#4}{}}{}{\ifthenelse{\equal{#3}{}}{}{, }{\slshape#4}}%
-    \ifthenelse{\equal{#5}{}}{}{\ifthenelse{\equal{#4}{}}{\ifthenelse{\equal{#3}{}}{}{, }}{, }#5}%
-    \ifthenelse{\equal{#6}{}}{}{, #6}%
-    % .\strut%
-    \strut
-    \ifx&#7&%
-    \else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
+\input{pre/style}
 
-% \newcommand{\tlitem}[3]{
-%   \tlcventry{#1}{#2}{#3}
-% }
-% \xpatchcmd{\tlitem}{\{\bfseries#3\}}{}{}{}
+\input{pre/defs}
 
-% \usepackage{ctable} % for \specialrule command
-% \newcommand{\thinline}{\specialrule{.02em}{0em}{0em}}
-
-\newcommand{\cvreferencecolumn}[2]{%
-  \cvitem[0.8em]{}{%
-    \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#1\end{minipage}%
-    \hfill%
-    \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#2\end{minipage}%
-    }%
-}
-
-\newcommand{\cvreference}[8]{%
-    \textbf{#1}\newline% Name
-    \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline}%
-    \ifthenelse{\equal{#3}{}}{}{#3\newline}%
-    \ifthenelse{\equal{#4}{}}{}{#4\newline}%
-    \ifthenelse{\equal{#5}{}}{}{#5\newline}%
-    \ifthenelse{\equal{#6}{}}{}{\emailsymbol~\texttt{\href{mailto:#6}{\nolinkurl{#6}}}\newline}%
-    \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7\newline}
-    \ifthenelse{\equal{#8}{}}{}{\mobilephonesymbol~#8}}
-
-% List of journals that I may need to use in the bibtex file
-\def\aj{AJ}
-\def\araa{ARA\&A}
-\def\apj{ApJ}
-\def\apjl{ApJ}
-\def\apjs{ApJS}
-\def\apss{Ap\&SS}
-\def\aap{A\&A}
-\def\aapr{A\&A~Rev.}
-\def\aaps{A\&AS}
-\def\mnras{MNRAS}
-\def\pasp{PASP}
-\def\pasj{PASJ}
-\def\qjras{QJRAS}
-\def\nat{Nature}
-\def\aplett{Astrophys.~Lett.}
-\def\aas{AAS}
-\def\solphys{Solar Physics}
-\def\memsai{Mem.~Soc.~Astron.~Italiana}
-
-
-% Personal Information
-\name{Barret \newline}{Schloerke}
-\title{{\large\emph{data[c(``wrangler'', ``explorer'', ``visualizer'')]}}}
-\address{Purdue University \\ Department of Statistics\\ 250 N. University St.\\}{West Lafayette, Indiana}{}
-% \phone[mobile]{(123)~123~1234}
-\email{schloerke@gmail.com}                % optional, remove / comment the line if not wanted
-% \homepage{mdastro.wix.com/maria-luiza-dantas}    % optional, remove / comment the line if not wanted
-\social[linkedin]{schloerke}  % optional, remove / comment the line if not wanted
-% \social[twitter]{mdastro}  % optional, remove / comment the line if not wanted
-\social[github]{schloerke}   % optional, remove / comment the line if not wanted
-% \extrainfo{\emailsymbol \emaillink{mdantas.astro@gmail.com}}
-% \quote{Dubitando ad veritatem parvenimus - \emph{Cicerone}}
-
-\makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
-
-% \definecolor{dark-blue}{rgb}{0, 0.09777, 0.55}
-\definecolor{dark-blue}{rgb}{0.0627, 0.1019, 0.5455}
-% \definecolor{dark-red}{cmyk}{#721A0E}
-
-\AtBeginDocument{
-  \hypersetup{%
-    colorlinks=true,
-    urlcolor=dark-blue,
-    pdfborderstyle={/S/U/W 1}% border style will be underline of width 1pt
-  }
-}
+\input{pre/personal_info}
 
 \begin{document}
 
@@ -119,58 +25,71 @@
 
 \section{Education}
 
-\bigskip
+\input{education/phd}
 
-\tlcventry{2013/1}{2017/12}{PhD of Statistics}{Purdue University}{West Lafayette, IN \newline Advisors: Dr. William Cleveland and Dr. Ryan Hafen \newline Graduation: December 2017}{}{}
+\input{education/masters}
 
-\tlcventry{2013/1}{2014/12}{Master of Science in Mathematical Statistics}{Purdue University}{West Lafayette, IN\newline GPA: 3.69 / 4.0}{}{}
+\input{education/rice}
 
-\tlcventry{2012/8}{2012/12}{Student for PhD of Statistics}{Rice University}{Houston, TX\newline Advisor: Dr. Hadley Wickham}{}{}
+% \input{education/undergrad}
+\tlcventry{2006/8}{2010/12}{Bachelor of Science in Computer Engineering}{Iowa State University}{Ames, IA}{3.77/4.0}{}
 
-\smallskip
+\section{Work Experience}
 
-% \tlcventry{2006/8}{2010/12}{Bachelor of Science in Computer Engineering}{Iowa State University}{Ames, IA\newline GPA: 3.77 / 4.0, Magna Cum Laude}{}{}
-\tldatecventry{2010/12}{Bachelor of Science in Computer Engineering}{Iowa State University}{Ames, IA\newline GPA: 3.77 / 4.0, Magna Cum Laude}{}{}
 
-% \bigskip
-%
-% \tlcventry{2007}{2011}{BSc Physics}{Institute of Physics - University of S\~ao Paulo \emph{(hereafter IF-USP)}}{São Paulo, Brazil}{}{Major in Astrophysics}
+\input{work/metamarkets.tex}
+\vspace{-10pt}
+% \vspace{-5pt}
 
-\bigskip
+\input{work/gates}
+% \vspace{-5pt}
 
+\input{work/darpa}
+% \vspace{-10pt}
+
+\input{work/purdue_ta}
+
+\input{work/hadley_ta}
+  % \vspace{-10pt} % for lack of content
+  % \vspace{-5pt}
+
+\input{work/novartis}
+\vspace{-5pt}
+
+
+\newpage
 \section{Honors and Awards}
 
 \tlcventry{2012/8}{2017/4}{ \href{http://www.nsf.gov/grfp}{National Science Foundation Graduate Research Fellowship}}{}{}{}{
   \begin{itemize}
-    \item Received a three-year fellowship
+    \item Received a three-year fellowship (to be used within five years) to pursue graduate studies in a science based field
     \item Only awardee for Computational Statistics of the thirteen statistical recipients in 2012
     \item One of five recipients from Iowa State University in 2012
   \end{itemize}
 }
 
-
-
-
-
-
-\tldatecventry{2015/2}{Visiting Scientific Researcher}{Department of Econometrics and Business Statistics}{Monash University - Melbourne, Victoria, Australia}{}{
+\tlrightcventry{2015/2}{2015/3}{Visiting Scientific Researcher}{Monash University}{Melbourne, Victoria, Australia}{}{
   \begin{itemize}
-    \item Received transportation and 1 month of lodging
+    \item Presented latest research on \pkg{gqlr} to WOMBAT2016
     \item Collaborated with \href{http://numbat.space}{NUMBAT} on large data exploration tools
   \end{itemize}
 }
 
-\tldatecventry{2015/2}{Visiting Scientific Researcher}{Fields Institute for
-Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
-  \begin{itemize}
-    \item Received transportation and lodging
-    \item Spoke at `\href{http://www.fields.utoronto.ca/programs/scientific/14-15/bigdata/visualization/}{Visualization for Big Data: Strategies and Principles}' workshop
-  \end{itemize}
+% \tldatecventry{2015/2}{Visiting Scientific Researcher}{Fields Institute for
+% Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
+%   \begin{itemize}
+%     \item Spoke at `\href{http://www.fields.utoronto.ca/programs/scientific/14-15/bigdata/visualization/}{Visualization for Big Data: Strategies and Principles}' workshop
+%   \end{itemize}
+% }
+
+% \bigskip
+
+\tldatecventry{2011/6}{Best Dynamic / Interactive Visualization}{\href{http://datainsightsf.com/}{Data Insight (SF)}}{San Francisco, CA}{}{
+\begin{itemize}
+  \item Team of four worked together over the weekend to produce an interactive visualization
+  \item Leaned on each other's skills to provide an application that highlighted our data and visualization talents
+\end{itemize}
 }
-
-\bigskip
-
-\tldatecventry{2011/6}{Best Dynamic / Interactive Visualization}{\href{http://datainsightsf.com/}{Data Insight (SF)}}{}{}{}
 
 \tldatecventry{2011/4}{\href{http://www.nsf.gov/grfp}{National Science Foundation Graduate Research Fellowship}}{Honorable mention}{}{}{}
 
@@ -195,80 +114,70 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 %
 % \tlcventry{2006/8}{2010/12}{President's Award for Competitive Excellence}{}{}{}{}
 
-\medskip
 
 
-\newpage
+
+
+
 \section{Publications}
 
   \subsection{Journal Articles}
 
-    % \tldatecventry{2011/4}{\href{http://www.nsf.gov/grfp}{National Science Foundation Graduate Research Fellowship}}{Honerable mention}{}{}{}
-    \tldatecventry{2017}{}{}{
-      Gökalp, F., Barret Schloerke. ``Parallel Programming in Linear Mixed Models.''. \emph{The R Journal}, Submitted 08/2017.
-    }{}{}
+  \input{publication/lmmpar}
 
+  \input{publication/boxland}
 
-    \tldatecventry{2016}{}{}{
-      Schloerke, B., Hadley Wickham, Dianne Cook, Heike Hofmann. ``Escape from Boxland: Generating a Library of High-Dimensional Geometric Shapes.''. \emph{The R Journal}, 8(2):243-257, December 2016.
-    }{}{}
+  \input{publication/generalized_pairs_plot}
 
+  \tldatecventry{2012}{}{}{
+    Hofmann H., D. Cook, C. Kielion, B. Schloerke, J. Hobbs, A. Loy, L. Mosley, D. Rockoff, Y. Huang, D. Wrolstad, and T. Yin ``\href{http://amstat.tandfonline.com/doi/abs/10.1198/jcgs.2011.3de}{Delayed, Canceled, on Time, Boarding… Flying in the USA.}'' \emph{Journal of Computational and Graphical Statistics} 20.2 (2012). Print.
+  }{}{}
 
-    \tldatecventry{2013}{}{}{
-      Emerson, J., W. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham ``\href{http://vita.had.co.nz/papers/gpp.pdf}{The Generalized Pairs Plot.}'' \emph{Journal of Computational and Graphical Statistics} 22.1 (2013). Print.
-    }{}{}
-
-
-    \tldatecventry{2012}{}{}{
-      Hofmann H., D. Cook, C. Kielion, B. Schloerke, J. Hobbs, A. Loy, L. Mosley, D. Rockoff, Y. Huang, D. Wrolstad, and T. Yin ``\href{http://amstat.tandfonline.com/doi/abs/10.1198/jcgs.2011.3de}{Delayed, Canceled, on Time, Boarding… Flying in the USA.}'' \emph{Journal of Computational and Graphical Statistics} 20.2 (2012). Print.
-    }{}{}
-
-    \tldatecventry{2010}{}{}{
-      Mosley, L., D. Cook, H. Hofmann, C. Kielion, and B. Schloerke. ``\href{http://chance.amstat.org/files/2010/12/Visually.pdf}{Monitoring the 2008 Election Visually.}'' \emph{Chance} 23.3 (2010). Print.
-    }{}{}
-
+  \tldatecventry{2010}{}{}{
+    Mosley, L., D. Cook, H. Hofmann, C. Kielion, and B. Schloerke. ``\href{http://chance.amstat.org/files/2010/12/Visually.pdf}{Monitoring the 2008 Election Visually.}'' \emph{Chance} 23.3 (2010). Print.
+  }{}{}
 
 
     \subsection{Presentations}
 
 
-    \tldatecventry{2017/4}{}{}{
+    \tlrightdatecventry{2017/4}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2017_04_14-cognostics}{``Cognostics: Metrics enabling detailed interactive visualization of big data''} CSESC2017. Purdue University, West Lafayette, IN. Apr. 2017. Speech.
     }{}{}
 
-    \tldatecventry{2017/1}{}{}{
+    \tlrightdatecventry{2017/1}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2017_01_26-tidyverse}{``tidyverse[c("magrittr", "dplyr", "tidyr")]''} Purdue Graduate Statistics Seminar. Math, West Lafayette, IN. Jan. 2017. Speech.
     }{}{}
 
-    \tldatecventry{2016/8}{}{}{
+    \tlrightdatecventry{2016/8}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2016_08_03_cognostics}{``Cognostics: Metrics enabling detailed interactive visualization of big data''} Joint Statistical Meeting. Chicago, IL. Aug. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/6}{}{}{
+    \tlrightdatecventry{2016/6}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2016_06_30-ggduo}{``ggduo: Pairs plot for two group data''} UseR!2016. Stanford University, Stanford, CA. Jun. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/6}{}{}{
+    \tlrightdatecventry{2016/6}{}{}{
       Schloerke, B. \href{https://slides.com/schloerke/tessera-src-2016-5-25}{``High Performance Computing for High-Resolution Analysis of Big Data and Small''} Spring Research Conference. Illinois Institute of Technology, Chicago, IL. Jun. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/4}{}{}{
+    \tlrightdatecventry{2016/4}{}{}{
       Schloerke, B. \href{https://slides.com/schloerke/tessera-purdue-2016-4-7}{``Analysis and Visualization of Large Complex Data with Tessera''}. Graduate Statistics Seminar. Purdue, West Lafayette, IN. Mar. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/3}{}{}{
+    \tlrightdatecventry{2016/3}{}{}{
       Schloerke, B. \href{http://slides.com/schloerke/tessera-isu-2016-3}{``Analysis and Visualization of Large Complex Data with Tessera''}. Graphics Research Group Seminar. Iowa State University, Ames, IA. Mar. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/2}{}{}{
+    \tlrightdatecventry{2016/2}{}{}{
       Schloerke, B. \href{http://slides.com/schloerke/tessera-monash-2016}{``Analysis and Visualization of Large Complex Data with Tessera''}. NUMBAT Seminar. Monash University, Melbourne, VIC AUS. Feb. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2016/2}{}{}{
+    \tlrightdatecventry{2016/2}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2016_02_18-graphql}{``GraphQL: An R server implementation''}. Wombat2016. Melbourne Zoo, Melbourne, VIC AUS. Feb. 2016. Speech.
     }{}{}
 
-    \tldatecventry{2015/10}{}{}{
+    \tlrightdatecventry{2015/10}{}{}{
       Schloerke, B. \href{https://github.com/schloerke/presentation-2015_10_20-web_scraping}{``Web Scraping with R''} American Credit Acceptance. Spartanburg, SC. Oct. 2015. Speech.
     }{}{}
 
@@ -297,7 +206,7 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
     % }{}{}
 
 
-\subsection{Talks}
+\subsection{Lightning Talks}
 
   \tldatecventry{2014/6}{\href{https://github.com/schloerke/presentation-2014_06_27-Git}{``git''}}{}{Purdue Working Group}{}{}
   \tlcventry{2011/1}{2011/12}{``Sinartra: Simple Web Framework'', ``5 Tips for Running Node in Production'', ``Express: Node Router''}{}{San Francisco Bay Area}{}{}
@@ -307,50 +216,36 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 
   \bigskip
 
-\newpage
+% \newpage
 \section{Research}
 
   \subsection{Purdue University}
   \cvitem{Advisors:}{Dr. Ryan Hafen and Dr. William Cleveland}
 
-  \tlcventry{2015/1}{0}{\href{https://github.com/hafen/trelliscopejs}{trelliscopejs}}{browser data visualization}{}{}{
-    \begin{itemize}
-      \item Ported original trelliscope R package to be separated from shiny
-      \item Full visual implementation in javascript dramatically increases interaction time
-      \item Utilized React.js javascript platform to produce a single webpage application with multiple URLS
-    \end{itemize}
-  }
+  \input{pkg/autocogs}
 
-  \tlcventry{2015/11}{0}{\href{https://github.com/schloerke/gqlr}{GraphQL}}{query language for your API}{}{}{
-    \begin{itemize}
-      \item GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
-      \item Native R GraphQL implementation to be used with Relay.js as a go-between the browser and a R data backend
-    \end{itemize}
-  }
+  \input{pkg/gqlr}
 
-  \tlcventry{2016/2}{2016/11}{\href{https://github.com/hafen/trelliscopejs}{rbokeh}}{R interface to Bokeh}{}{}{
+  \tlrightcventry{2016/1}{2016/10}{\href{https://github.com/ggobi/ggally/}{\texttt{GGally::ggduo}}}{\textnormal{Generalized plot matrix for two-grouped data}}{\emph{Purdue University}}{}{
     \begin{itemize}
-      \item A native R plotting library that provides a flexible declarative interface for creating interactive web-based graphics, backed by the Bokeh visualization library.
-      \item Utilized non-standard evaluation within package to remove massive amounts of boilerplate
-    \end{itemize}
-  }
-
-  \tlcventry{2016/1}{2016/10}{\href{https://github.com/ggobi/ggally/}{GGally::ggduo}}{plot matrix for two grouped data}{}{}{
-    \begin{itemize}
-      \item Pairs plot for two group data
       \item Extension of ggpairs built on top of a ggmatrix object
+      \item Pairs plot for two group data
       \item Readily useful for multiple time series analysis and canonical correlation analysis
       \item Foundation function for \href{http://ggobi.github.io/ggally/rd.html\#ggnostic}{`ggnostic'}, a model diagnostic plot matrix, and \href{http://ggobi.github.io/ggally/rd.html\#ggts}{`ggts'}, a time series plot matrix
       \item Funded by \href{https://github.com/rstats-gsoc/gsoc2016/wiki/ggduo:-pairs-plots-for-multiple-regression,-cca,-time-series}{Google Summer of Code} with \href{https://github.com/schloerke/gsoc-ggduo-final}{final report}
     \end{itemize}
   }
 
-  \tlcventry{2015/1}{2016/1}{\href{https://github.com/ggobi/ggally/}{GGally::ggmatrix}}{generalized plot matrix}{}{}{
+  \tlrightcventry{2015/1}{2016/1}{\href{https://github.com/ggobi/ggally/}{\texttt{GGally::ggmatrix}}}{\textnormal{Generalized plot matrix}}{\emph{Purdue University}}{}{
     \begin{itemize}
       \item Handles arbitrary plot columns and rows
       \item Used as display mechanism for all GGally plot matrix functions
     \end{itemize}
   }
+
+  \input{pkg/trelliscopejs}
+
+  \input{pkg/rbokeh}
 
   \tlcventry{2013/4}{2013/8}{\href{https://github.com/schloerke/Bitcoin-Transaction-Network-Extraction}{Bitcoin}}{DARPA XDATA}{}{}{
     \begin{itemize}
@@ -362,13 +257,29 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
     \end{itemize}
   }
 
+\bigskip
+
+  \subsection{Metamarkets}
+
+  \tlcventry{2011/5}{2012/7}{\href{http://github.com/vogievetsky/DVL}{DVL}}{\textnormal{Data Visualization Legos}}{\emph{Metamarkets}}{}{
+  \begin{itemize}
+    \item Functionally reactive javascript library to bind data to functions and visualizations
+  \end{itemize}}
+
+  \tlcventry{2012/1}{2012/4}{\href{http://github.com/schloerke/yalog}{yalog}}{\textnormal{Yet Another Logger}}{\emph{Metamarkets}}{}{
+  \begin{itemize}
+    \item Request logger to allow for personalized logging messages within different log levels
+  \end{itemize}
+  }
+
+
 
   \bigskip
 
 \subsection{Rice University}
   \cvitem{Advisor:}{Dr. Hadley Wickham}
 
-  \tllabelcventry{2010/4}{2010/8}{Summer 2010}{\href{http://github.com/hadley/helpr/}{helpr}}{Help for R}{}{}{
+  \tlcventry{2010/4}{2010/8}{\href{http://github.com/hadley/helpr/}{helpr}}{Help for R}{}{}{
     \begin{itemize}
       \item Betters Friendly HTML documentation with links to other packages, function aliases, and function sources.  Finding information may be done with the comprehensive search bar.
     \end{itemize}
@@ -381,7 +292,7 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 
 
   % using 2010 dates for pretty alignment
-  \tllabelcventry{2010/4}{2010/8}{Summer 2009}{VIGRE Program}{}{}{}{
+  \tlcventry{2010/4}{2010/8}{VIGRE Program}{}{}{}{
     \begin{itemize}
       \item Performed exploratory analysis on the housing crisis
       \item Found, cleaned, and explored multiple data sets
@@ -398,87 +309,55 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 
   \bigskip
 
-\subsection{Novartis Pharmaceutical}
-  \cvitem{Mentors:}{Dr. Francois Mercier and Dr. Anthony Rossini}
-  % using 2010 times to pretty alignment
-  \tllabelcventry{2010/4}{2010/8}{Summer 2008}{\href{http://novartis.schloerke.com/}{Novartis Pharmaceutical R\&D}}{}{}{}{
-    \begin{itemize}
-      \item Created a time management tool using gantt charts to help management quickly display availability.
-      \item Created a web-based tutorial consisting of examples of the most common graphics produced when using different layouts.  This allowed users to know exactly how everything was being displayed.  (white-box)
-      \item Worked cohesively with the top 15 statisticians within Novartis.
-    \end{itemize}
-  }
-  % Modeling and Simulation group, Novartis AG. Basel, Switzerland. Invited by Anthony Rossini. Summer 2008. Development of graphical methods, tutorials for visualizing data, and a time management tool.
-  %
-  % The web-based tutorial consisted of examples of most common graphics produced when using different layouts. It included new ways to display data as well. The time management tool produced outputs of the projects that people were involved in as reported in a .CSV file (exported .XLS file). The tool used an API to execute everything. It could allow the outputs to be split by project or similar criteria.
-  %
-  % During the internship, I worked coherently with the top 15 statisticians within Novartis.  Each week we meet to learn about what each other was doing.
-
-  \bigskip
-
-\newpage
 \subsection{Iowa State University Statistics Research}
   \cvitem{Advisors:}{Dr. Dianne Cook and Dr. Heike Hofmann}
   % Starting in the Summer of 2007, I worked under Dr. Dianne Cook and Dr. Heike Hofmann, ISU Statistics professors. Since then, I have explored different topics in graphics. Each project has touched on different areas. (Starting from most recent).
 
+  \input{pkg/ggally}
 
-  \tlcventry{2010/1}{0}{\href{http://ggobi.github.io/ggally/}{GGally R package}}{Extension of ggplot2}{}{}{
+  \tlcventry{2010/1}{2010/12}{\href{http://github.com/ggobi/cranvas/}{cranvas}}{New Plotting Canvas for R}{}{}{
     \begin{itemize}
-      \item Re-designed the scatterplot matrix within ggplot2 to handle other variable types
-      \item Users may submit custom functions to be displayed in the plot matrix
-      \item Collaborated with over 9 contributing authors
-      \item $> 18$k downloads a month
-      \item Barret Schloerke, Dr. Wickham, Dr. Cook, Dr. Hofmann, Dr. Hafen
-      \item Iowa State University, Purdue University
+      \item New plotting canvas for R.  Produces more than a million points in less than a second.
+      \item Dr. Wickham, Dr. Lawrence, Dr. Hoffman, Dr. Cook, Yihui Xie, Tengfei Yin, Marie Vendettuoli, Barret Schloerke
     \end{itemize}
   }
-      % Scatterplot matrices are limited to viewing multivariate data because they only allow pairwise plots of real-valued variables. We've re-designed the scatterplot matrix to handle other variable types, and implemented this in a new R package called Gally. GGally accepts common X vs. Y combinations of data types and makes an intelligent guess at the at the best type of pairwise plot to use, for example, mosaic plot, side-by-side boxplots, or scatterplot. The upper triangle, and lower triangle, contain different plot types for the same pair of variables which may be specified. Each sub plot may be retrieved, alterd, and/or completely replaced by a custom-produced display. The software is built upon Hadley Wickham's ggplot2 package, and builds on ideas contained in Jay Emersons gpairs plot in the YaleToolkit package. Future work will expand the offerings of composite types of displays.
-      %
-      % Direction from Hadley Wickham (Rice), Dianne Cook (ISU), Heike Hofmann (ISU)
-
-    \tlcventry{2010/1}{2010/12}{\href{http://github.com/ggobi/cranvas/}{cranvas}}{New Plotting Canvas for R}{}{}{
-      \begin{itemize}
-        \item New plotting canvas for R.  Produces more than a million points in less than a second.
-        \item Dr. Wickham, Dr. Lawrence, Dr. Hoffman, Dr. Cook, Yihui Xie, Tengfei Yin, Marie Vendettuoli, Barret Schloerke
-      \end{itemize}
-    }
 
 
-      \tlcventry{2009/8}{2009/12}{\href{http://github.com/ggobi/DescribeDisplay}{DescribeDisplay}}{Reproduce GGobi images in R}{}{}{
-        \begin{itemize}
-          \item Produce publication quality graphics from GGobi's describe display plugin.
-        \end{itemize}
-      }
-      % Produce publication quality graphics from output of GGobi's describe display plugin
+  \tlcventry{2009/8}{2009/12}{\href{http://github.com/ggobi/DescribeDisplay}{DescribeDisplay}}{Reproduce GGobi images in R}{}{}{
+    \begin{itemize}
+      \item Produce publication quality graphics from GGobi's describe display plugin.
+    \end{itemize}
+  }
+  % Produce publication quality graphics from output of GGobi's describe display plugin
 
-      \tlcventry{2009/8}{2009/12}{\href{http://github.com/ggobi/tourr}{tourr}}{Geodesic interpolation and basis generation functions}{}{}{
-        \begin{itemize}
-          \item Implements geodesic interpolation and basis generation functions that allow you to create new tour methods in R.
-          \item Dr. Wickham, Dr. Cook, Barret Schloerke
-          \item Iowa State University and Rice University
-        \end{itemize}
-      }
-      % Implements geodesic interpolation and basis generation functions that allow you to create new tour methods from R.
+  \tlcventry{2009/8}{2009/12}{\href{http://github.com/ggobi/tourr}{tourr}}{Geodesic interpolation and basis generation functions}{}{}{
+    \begin{itemize}
+      \item Implements geodesic interpolation and basis generation functions that allow you to create new tour methods in R.
+      \item Dr. Wickham, Dr. Cook, Barret Schloerke
+      \item Iowa State University and Rice University
+    \end{itemize}
+  }
+  % Implements geodesic interpolation and basis generation functions that allow you to create new tour methods from R.
 
 
-  \tlcventry{2009/1}{2009/5}{\href{http://stat-computing.org/dataexpo/2009/posters/hofmann-cook.pdf}{American Statistical Association Data Expo}}{Delayed, Cancelled, On-Time, Boarding ... Flying in the USA}{}{}{
+  \tlleftcventry{2009/1}{2009/5}{\href{http://stat-computing.org/dataexpo/2009/posters/hofmann-cook.pdf}{American Statistical Association Data Expo}}{Delayed, Cancelled, On-Time, Boarding ... Flying in the USA}{}{}{
     \begin{itemize}
       \item Displayed airport delays caused by airport layout using multiple applications.
       \item Using Google's KML language, R and wget, we produced Google Earth images with the runways highlighted.
       \item Iowa State University working group finished 2nd in the \href{http://stat-computing.org/dataexpo/2009/posters/}{world competition}.
     \end{itemize}
   }
-    % \item{2009 ASA Data Expo:} Delayed, Cancelled, On-Time, Boarding ... Flying in the USA
-    %
-    % The 2009 ASA Data Expo aim was to produce a graphical summary of important features.  Areas that I worked on dealt with which carriers were the best and why they were the best, which carriers performed the least amount of ``ghost flights'' (empty flights) and whether or not the layout of the airport was correlated with delays.
-    %
-    % Displaying the airport delays caused by airport layout used multiple applications.  Using Google's KML language, R and wget, Chris and I were able to produce Google Earth Images with the runways highlighted.  Following this, we produced images of the wind tendencies at each airport and matched them up with the corresponding airport runway direction.
-    %
-    % The group finished 2nd in the \href{http://stat-computing.org/dataexpo/2009/posters/}{world competition}.
+  % \item{2009 ASA Data Expo:} Delayed, Cancelled, On-Time, Boarding ... Flying in the USA
+  %
+  % The 2009 ASA Data Expo aim was to produce a graphical summary of important features.  Areas that I worked on dealt with which carriers were the best and why they were the best, which carriers performed the least amount of ``ghost flights'' (empty flights) and whether or not the layout of the airport was correlated with delays.
+  %
+  % Displaying the airport delays caused by airport layout used multiple applications.  Using Google's KML language, R and wget, Chris and I were able to produce Google Earth Images with the runways highlighted.  Following this, we produced images of the wind tendencies at each airport and matched them up with the corresponding airport runway direction.
+  %
+  % The group finished 2nd in the \href{http://stat-computing.org/dataexpo/2009/posters/}{world competition}.
 
 
 
-  \tlcventry{2008/8}{2008/12}{\href{http://isu_research.schloerke.com/Election/}{Election Data}}{Explore new ways to show the Electoral College for the 2008 Presidential Election}{}{}{
+  \tlleftcventry{2008/8}{2008/12}{\href{http://isu_research.schloerke.com/Election/}{Election Data}}{Explore new ways to show the Electoral College for the 2008 Presidential Election}{}{}{
     \begin{itemize}
       \item Created a custom cartogram of the United States with area proportional to the electoral vote of each state.
       \item Produced the `Electoral Vote Towers' (inspired by New York Times 2000 Presidential Race) that quickly portrayed the electoral vote status.
@@ -494,7 +373,7 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 
 
 
-  \tlcventry{2008/8}{2008/12}{\href{http://isu_research.schloerke.com/DNA/index.html}{DNA}}{Viewing DNA sequence data}{}{}{
+  \tlleftcventry{2008/8}{2008/12}{\href{http://isu_research.schloerke.com/DNA/index.html}{DNA}}{Viewing DNA sequence data}{}{}{
     \begin{itemize}
       \item Extension of the polytope ranking.
       \item Created combinations of DNA sequences with a length of four which were displayed in a grand tour.
@@ -505,14 +384,14 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 %
 % The original goal was to make outputs for a sequence of 6 digits but was later reduced to 4 digits when some constraints were imposed. The project was an extension of the polytope ranking from Spring 2008. It developed proportionally sized spheres at each vertice/combination with points jittered on the surface of the sphere. This makes the most common sequences `pop' out at the viewer.
 
-  \tlcventry{2008/1}{2008/5}{Polytope Ranking}{Visualizing ranked data}{}{}{
+  \tlleftcventry{2008/1}{2008/5}{Polytope Ranking}{Visualizing ranked data}{}{}{
     \begin{itemize}
       \item Created a model that would connect a ranked data set.
       \item Added jittered data points to each combination with the distance relative to the amount of points.
     \end{itemize}
   }
 
-  \tlcventry{2007/8}{2007/12}{\href{http://isu_research.schloerke.com/FaceOff/}{FaceOff}}{`Lines and Dots' in the fourth dimension}{}{}{
+  \tlleftcventry{2007/8}{2007/12}{\href{http://isu_research.schloerke.com/FaceOff/}{FaceOff}}{`Lines and Dots' in the fourth dimension}{}{}{
     \begin{itemize}
       \item Game created to calibrate users into viewing and thinking in the fourth dimension.
       \item Game is a combination of  ``Connect 4'', ``Tic Tac Toe'', and ``Dots and Lines.''
@@ -526,7 +405,7 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 % The FaceOff \href{http://www.public.iastate.edu/~bigbear/FaceOff/index.html}{website} has a video and PDF tutorial.
 
 
-\tlcventry{2007/8}{2007/11}{IEEE Infovis Competition}{2007 Infovis visualization competition}{}{}{
+\tlleftcventry{2007/8}{2007/11}{IEEE Infovis Competition}{2007 Infovis visualization competition}{}{}{
   \begin{itemize}
     \item Internet Movie Data Base (IMDB) competition.
     \item Worked on the genres of the database using the ``Many Eyes'' web application.
@@ -545,7 +424,7 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 
 % The Freshman Honors program provides a wonderful opportunity for freshman undergrad students to participate in research.  I participated under Dr. Sriram Sundararajan, a Mechanical Engineer professor,  on micro/nanoscale tribology.  The goal of the project was to take the old strain gauge and strain gauge monitor and turn it into a modern-day strain gauge system.  Another program member and I learned how to use LabVIEW and then used our knowledge to program a system to interpret the readings from the strain gauge attached to the system.  The program that we made allowed the user to record the strain caused by the friction from the spinning material over time.  The program also calculated the coefficient of friction at each time.  We ran several test runs on the new system to check it.
 
-\tlcventry{2007/1}{2007/12}{\href{http://schloerke.github.io/geozoo/}{GeoZoo}}{A library of high dimension geometric objects}{}{}{
+\tlleftcventry{2007/1}{2007/12}{\href{http://schloerke.github.io/geozoo/}{GeoZoo}}{A library of high dimension geometric objects}{}{}{
   \begin{itemize}
     \item Functions to produce cubes, spheres, simplices, polyhedra, polytops, tori, and mobius-like objects.
     \item Contains a new addition to the high dimension polytopes, a Hyper Ring Torus
@@ -557,432 +436,36 @@ Research in Mathematical Sciences}{Toronto, Ontario, Canada}{}{
 % From my work on GeoZoo, I submitted a paper on the objects to The R Journal.
 
 
-\newpage
-\section{Work Experience}
 
-  \subsection{Bill and Melinda Gates Foundation Consultant}
-
-  \tlcventry{2016/4}{0}{Tool Development Team}{}{}{}{}
-
-  \subsection{\href{http://metamarkets.com/}{Metamarkets} - San Francisco, CA}
-
-  \tlcventry{2011/1}{2012/7}{Software Engineer}{}{}{}{
-    \begin{tabular}{p{7.25cm}p{0.5cm}p{7.25cm}}
-      {Client-Side} & & {Server-Side} \\
-      \hline
-      \begin{itemize}
-        \item Developed url framework
-        \item Created the javascript foundation from scratch
-        \item Utilized DVL and D3 to make visualizations and objects data dependant
-        \item Modularized the code to make it useable in multiple locations
-        \item Sped up deployment of code and utilized browser caching
-        \item Minimized calls to backend server to avoid excessive load
-      \end{itemize} & &
-      \begin{itemize}
-        \item Learned and implemented Node.js
-        \item Developed / forked multiple public packages
-        \item Developed user management system
-        \item Developed / utilized user configuration file
-        \item Allowed user configuration to work with self serve process
-        \item Maintained client security
-        \item Implemented custom server cluster to prevent request failure
-        \item Merged multiple data sources per request
-        \item Wrote custom security check and error notification system
-      \end{itemize}
-    \end{tabular}
-  }
-  % Metamarkets is a web-based platform that allows its clients, digital publishers from around the globe, to gain better understanding of trends in the billions of ads they sell daily. Metamarkets was created to provide large-scale data analytics services. The analytics range from an hourly and daily aggregation of basic information, to predictions of how many advertisement impressions should be sold. By grouping this service in one location, many companies can interface with Metamarkets without trying to produce a similar monolithic service from scratch.
-  % At Metamarkets, I design the client facing servers to route secure data and a platform for the web browser for client-side interaction. Clients request their data and it is massaged into a small and usable state so the browser is able to view the data easily. Metamarkets’ servers power the data manipulation so that the client only needs a web browser. Once the web browser has a handle on the functional data, I use the latest web graphics, D3, to produce interactive visualizations. D3 (Data-Driven Documents) is a JavaScript library created to manipulate website documents based on data. Using D3, I help build our own internal tool called DVL (Dynamic Visualization Library). DVL allows the frontend team to think in terms of pipelines rather than constantly knowing every component’s state. This allows each step of the interaction process to be independent from one another, providing simpler code and smoother interactions. Using a medium that can leverage the latest technology facilitates a symbiotic relationship between the user and company.
-
-  \tlcventry{2011/5}{2012/7}{\href{http://github.com/vogievetsky/DVL}{DVL}}{Data Visualization Legos}{}{}{Functionally reactive javascript library to bind data to functions and visualizations}
-
-  \tlcventry{2012/1}{2012/4}{\href{http://github.com/schloerke/yalog}{yalog}}{Yet Another Logger}{}{}{Request logger to allow for personalized logging messages within different log levels}
-
-
-  \subsection{R Master Class Assistant}
-  \cvitem{Instructor:}{Hadley Wickham}
-  \tldatecventry{2015/6}{Chicago, IL}{``Package Development in R''}{50 people}{}{}{}
-  \tldatecventry{2011/6}{San Francisco, CA}{``Advanced Programming Techniques'' and ``Package Development in R''}{40 people}{}{}{}
-
-
-
-
-
-
-
-
-
-
+% \newpage
 
 % \newpage
 
   \section{Service}
 
-  \subsection{\href{https://github.com/schloerke/r-for-data-science-purdue}{R for Data Science Seminar}}
+  \input{service/r4ds}
+  \input{service/gso}
 
-  \tlcventry{2017/2}{2017/4}{Seminar Instructor}{Purdue}{}{}{
+  \tlcventry{2014/8}{2016/4}{StatCom Assistant}{}{}{}{
     \begin{itemize}
-      \item Organize and present course material
-      \item Coordinate with students maximize student attendance
-      \item Field student's questions and adapt presentations to match student abilities
+      \item Coordinated and put on multiple events
+      \item Helped in production of StatCom banner
     \end{itemize}
   }
 
+  \input{service/stat_mentor}
 
-  \subsection{Graduate Office / Leadership Positions}
+\section{Extra}
 
-    \tlcventry{2016/8}{2017/4}{Graduate Student Office President}{Statistics}{}{}{
-      \begin{itemize}
-        \item Organize Graduate Stent Mentor Program
-        \item Organize Esteemed Speaker event for the Spring semester
-        \item Run elections for the following year
-      \end{itemize}
-    }
+\vspace{-5pt}
+\input{extra/languages}
+\input{extra/systems}
 
 
-    \tlcventry{2014/8}{2016/4}{StatCom Assistant}{}{}{}{
-      \begin{itemize}
-        \item Coordinated and put on multiple events
-        \item Helped in production of StatCom banner
-      \end{itemize}
-    }
+% \input{extra/coursework}
 
-    \tlcventry{2014/8}{2016/4}{Graduate Student Mentor}{}{}{}{}
-
-  % \subsection{Undergraduate Office / Leadership Positions}
-  %
-  % \tlcventry{2007/1}{2010/12}{Iowa State University Hip Hop Club (Dub H)}{Technology Chair and Executive Committee}{}{}{
-  %   \begin{itemize}
-  %     \item Made club self sustaining
-  %     \item Plan, execute, and review all events
-  %     \item Produce videos and DVDs for club
-  %   \end{itemize}
-  % }
-  % % Dub H is one of the largest Iowa State University campus organizations with over 450 members. In Dub H, I have been on the executive committee as the Technology Director since Spring semester of 2008. In the Fall of 2007, I helped make the club self-sustaining in that the club now owns its own camera, camera accessories, and editing software and equipment. As technology updates, I recommend software and hardware updates that deem necessary or beneficial. In the Fall of 2009, I updated the website and currently maintain it. The \href{http://www.stuorg.iastate.edu/dubh/}{website} now offers a google calendar and RSS feed to keep the members up-to-date. It also displays our public performances hosted by YouTube. The club performs in front of over 3000+ people within the course of a year. Being on the exec (of six people) board, we prepare for the multiple events and make certain they run smoothly.
-  %
-  % \tlcventry{2007/8}{2010/4}{GRIP Mentoring}{Leader/Friend}{}{}{Met with and provided guidance for a middle school student in Gilbert, IA}
-  % % Great Relationships In Pairs is a mentor program within Ames Youth and Shelter Services. I have met with the same Gilbert Middle School student for the past two and a half years. Each week we get together and I provide guidance on how to solve daily social problems as well as a fun hour for his week. It has been rewarding for both of us.
-  %
-  % \tlcventry{2010/1}{2010/3}{Greek Week Check-In}{Electronic Check-in for Events}{}{}{
-  %   \begin{itemize}
-  %     \item Managed a system with more than 2300 records for 10+ events
-  %     \item Linked to participants Iowa State University identification card
-  %   \end{itemize}
-  % }
-  % % During Greek Week, over 2300 people need to check-in to 10+ events. Using the participants' ISU ID card, they can swipe their card to sign in. This process was manually done by three people and now it can be done with one person manning a computer. The program checks for the person in the database, whether or not they have filled out a waiver, and the participation given by each pairing. Security is used to make sure that the system cannot be altered. I created this program after gaining knowledge from a previous class project.
-  %
-  % \tlcventry{2009/1}{2010/4}{Eta Kappa Nu}{}{}{}{
-  %   \begin{itemize}
-  %     \item Organized event to inform middle school students what a Computer Engineer does at Iowa State University - Service Chair - Spring 2010
-  %     \item Oversaw the meetings and made certain that the events were run properly - Vice President - Spring 2009
-  %   \end{itemize}
-  % }
-  % % I helped oversee the meetings and made certain that the events were run properly.
-  %
-  % \tlcventry{2007/8}{2009/4}{FarmHouse Fraternity}{Scholarship Chair}{}{}{
-  %   \begin{itemize}
-  %     \item Implemented five new programs to strengthen GPA
-  %     \item Moved committee chair into an executive position
-  %   \end{itemize}
-  % }
-  % % Grades have always been important to me. After being appointed scholarship chair in the fall of 2007, I implemented over five new programs to strengthen the house's individual and group GPA. In the evenings, I was available to others in assisting them with their studies. My last semester term, I proposed that FarmHouse make this duty an executive position. The ISU chapter of FarmHouse voted to accept the position of Scholarship Chair to be on the executive committee. Subsequently, as a house we reached a new all time high GPA of  3.29.
-  %
-  % \tlcventry{2007/1}{2007/12}{E-Ball Subcommittee}{Committee Member}{}{}{
-  %   \begin{itemize}
-  %     \item Planned dance event for 800 people
-  %     \item Specialized in food selection
-  %   \end{itemize}
-  % }
-  % % Engineers Week is a weeklong event at Iowa State University ending with the Engineers' Ball that hosts about 800 people. I was on the committee for the Engineers' Ball. While assisting in the planning of the overall event, my main job was to be in charge of food selection and quantity on a \$7000 budget.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% \section{Graduate Coursework}
-%
-% {\footnotesize
-%
-%   \begin{tabular}{ll}
-%
-% % \semtable{Fall 2006 - Iowa State University}
-% %   Chem 167 & Engnrs General Chem 167 & 4.0 & A- & \\
-% %   Engr 101 & Engineering Orietn  & R & S &\\
-% %   Engr 131 & Learning Comm Semnr & R & S &\\
-% %   Engr 160 & Engr Prob w/Cpr Lab & 3.0 & A &\\
-% %   Hon 121 & Freshman Honors Sem & 1.0 & S & Honors\\
-% %   Lib 160 & Lib Instruction  & 0.5 & S & Honors\\
-% %   Math 165 & AdvPl-Calculus I & 4.0 & T &\\
-% %   Math 166 & Calculus II & 4.0 & A &\\
-% %   Music 151B  & Statesmen Mens Choir & 1.0 & A &
-% % \semtableend
-% % &
-% % \semtable{Spring 2007}
-% %   Chem 167L & Enginr Gen Chem Lab & 1.0  & A- &\\
-% %   Engr 170 & Engr Graphics and Desgn & 3.0 & B+ &\\
-% %   Hon 290H & Special Prob Honors & 1.0 & S & Honors\\
-% %   Hon 322F & Data: Graphical, Visual & 1.0 & S & Honors\\
-% %   M E 102 & Mech Engr Orientatn & R & S &\\
-% %   Math 265 & Calculus III & 4.0 & A &\\
-% %   Music 151B & Statesmen Mens Choir & 1.0 & A &\\
-% %   Phys 221H & Honors- Classic Phys I & 5.0 & A & Honors\\
-% % \semtableend
-% % \\
-% % \smallslash
-% %
-% % \semtable{Summer 2007}
-% %   E M 274 & Statics of Engineer & 3.0 & A &
-% % \semtableend
-% % &
-% % \\
-% % \smallslash
-% %
-% % \semtable{Fall 2007}
-% %   E M 324 & Mechan of Materials & 3.0 & A &\\
-% %   M E 202 & Mech Engr Pro Plan & R & S &\\
-% %   Math 267 & Diff Eq and Transfms & 4.0 & A- &\\
-% %   Phys 222H & Honors- Classical Phys II & 5.0 & A &Honors\\
-% %   Stat 305 & Engineering Stat & 3.0 & A- &
-% % \semtableend
-% % &
-% % \semtable{Spring 2008}
-% %   E M  345 & Dynamics & 3.0 & A- &\\
-% %   Econ 102H & Honors Prin MacroEc & 3.0 & B+ &Honors\\
-% %   M E 231 & Engr Thermodynams I & 3.0 & P&\\
-% %   M E 270 & Intr Mch Eng Design & 3.0 & P&\\
-% %   MAT E 272 & Prin Matrls Sci\&Eng & 2.0 & A&
-% % \semtableend
-% % \\
-% % \smallslash
-% %
-% % \semtable{Fall 2008}
-% %   Com S 227 & Intro to Objt Orien Prg & 4.0 & A &\\
-% %   Cpr E 281 & Digital Logic & 4.0 & A- &\\
-% %   EE 201 & Electrical Circuits & 4.0 & A &\\
-% %   Psych 280 & Social Psychology & 3.0 & P &
-% %   \\
-% % \semtableend
-% % &
-% % \semtable{Spring 2009}
-% %   Com S 228 & Intro to Data Structur & 3.0 & A- &\\
-% %   Cpr E 166 & Pro Prog Orientatn & R & S &\\
-% %   Cpr E 288 & Embedde Sys I:Intro & 4.0 & B+ &\\
-% %   Cpr E 310 & Theoret Found Cpr E & 3.0 & A &\\
-% %   W S 201 & Intro Women's Studi & 3.0 & A &
-% % \semtableend
-% % \\
-% % \smallslash
-% %
-% % \semtable{Fall 2009}
-% %   Com S 309 & Sftwr Dev Practces & 3.0 & A- &\\
-% %   Cpr E 381 & Cptr Org \& Asmb Prog & 4 & A &\\
-% %   Engl 314 & Technical Communctn & 3.0 & B &\\
-% %   I E 409 & Intdiscp Sys Effctv & 3.0 & A- &\\
-% %   Relig 323 & Science \& Religion & 3.0 & B- &\\
-% %   S E 319 & Sftwr Cnstr \& User In & 3.0 & A &
-% % \semtableend
-% % &
-% % \semtable{Spring 2010}
-% %   AESHM 342 & Aesthetc of Everydy & 3.0 & A &\\
-% %   Com S 311 & Dsn \& Analysis Algrth & 3.0 & B+ &\\
-% %   Cpr E 308 & Operat Sys: Prn \& Pra & 4 & A- &\\
-% %   Cpr E 491 & Senior Design Proj \& Pro & 3.0 & B+ &\\
-% %   Cpr E 494 & Portfolio Assessmnt \& Pro & R & S &\\
-% % \semtableend
-% % \\
-% % \smallslash
-% %
-% % \semtable{Summer 2010}
-% %   E E 230 & ELECTRON CIRCTS \& SYS & 4.0 & A &
-% % \semtableend
-% % &
-% % \\
-% % \smallslash
-% %
-% % \semtable{Fall 2010}
-% %   Cpr E 388X & Embed Sy I:Miccntrl & 4.0 & A  & \\
-% %   Cpr E 492 & Sr Design Projct II & 2.0 & A- &\\
-% %   Cpr E 530 & Adv Protcl \& Nt Secur & 3.0 & A &\\
-% %   HD FS 276 & Human Sexuality & 3.0 & A &\\
-% %   HRI 383 & Intro Wine,Beer,Spi & 2.0 & P &
-% % \semtableend
-% % &
-% % \\
-% % \smallslash
-% %
-% % \thinline
-%
-%
-%     \semtable{Fall 2012 - Rice University}
-%       Stat 431 & Overview of Math Stat & 3.0 & B & \\\
-%       Stat 615 & Intro to Reg \& Comput & 3.0 & A- & \\
-%       Stat 621 & Applied TS \& Forecasting & 3.0 & A- & \\
-%       Stat 601 & Statistics Colloquium & 1.0 & A &\\
-%       Stat 405 & Intro to Data Analysis & & & TA
-%     \semtableend
-%     &
-%     \semtable{Spring 2013 - Purdue University}
-%       Stat 519 & Intro To Probability & 3.0 & B+ & \\
-%       Stat 526 & Adv Stat Methodology & 3.0 & B+ & \\
-%       Stat 528 & Intro Math Stat & 3.0 & A- & \\
-%       Stat 692 & Statistics Seminar & 1.0 & P & \\
-%     \semtableend
-%     \\
-% 	\\
-%
-%
-%     \semtable{Summer 2013}
-%       Stat 598 & Qualifier Prep Course & 3.0 & A &
-%     \semtableend
-%     &
-%     \\
-% 	\\
-%
-%     \semtable{Fall 2013}
-%       Stat 532 & Elem Stochastic Proc &  3.0 & B- & \\
-%       Stat 545 & Intro Comp Statistics & 3.0 & A & \\
-%       Stat 598 & New Student Seminar & 1.0 & A & \\
-%       Stat 695 & Recent Dev In Bays Anlys & 3.0 & A &
-%     \semtableend
-%     &
-%     \semtable{Spring 2014}
-%       Stat 546 & Computational Statistics & 3.0 & B+ & \\
-%       Stat 553 & Linear Models & 3.0 & A- & \\
-%       Stat 598 & Functional Data Analysis & 3.0 & A+ & \\
-%       Stat 692 & Statistics Seminar & 1.0 & P &
-%     \semtableend
-%     \\
-% 	\\
-%
-%     \semtable{Summer 2014}
-%       Stat 598 & Qualifier Prep Course & 3.0 & A &
-%     \semtableend
-%     &
-%     \\
-% 	\\
-%
-%     \semtable{Fall 2014}
-%       Stat 514 & Design Of Experiment & 3.0 & A- & \\
-%       Stat 598 & Spatial Statistics & 3.0 & A+ & \\
-%       Stat 695 & R/RHIPE/Hadoop & 3.0 & A+ & \\
-%       Stat 699 & Research PhD Thesis & 2.0 & S &
-%     \semtableend
-%     &
-%     \semtable{Spring 2015}
-%       Stat 598 & Bioinformatic/Stat Gen & 1.0 & A  & \\
-%       Stat 695 & Visualizing Lg Complex Data & 3.0 & A+ & \\
-%       Stat 699 & Research PhD Thesis & 14.0 & S & \\
-%     \semtableend
-%     \\
-% 	\\
-%
-%     \semtable{Summer 2015}
-%       Stat 598 & Qualifier Prep Course & 3.0 & A & \\
-%       Stat 699 & Research PhD Thesis & 6.0 & S &
-%     \semtableend
-%     &
-%     \\
-% 	\\
-%
-%
-%
-%     \semtable{Fall 2015}
-%       Stat 598 & Spatial Statistics Seminar & 1.0 & S & \\
-%       Stat 699 & Research PhD Thesis & 12.0 & S & \\
-%     \semtableend
-%     &
-%     \semtable{Spring 2016}
-%       Stat 598 & Spatial Statistics Seminar & 1.0 & S & \\
-%       Stat 699 & Research PhD Thesis & 8.0 & S & \\
-%     \semtableend
-%     \\
-%
-%     \semtable{Summer 2016}
-%       Stat 699 & Research PhD Thesis & 6.0 & S &
-%     \semtableend
-%     &
-%     \\
-% 	\\
-%
-%     \semtable{Fall 2016}
-%       Stat 598 & Spatial Statistics Seminar & 1.0 & S & \\
-%       Stat 699 & Research PhD Thesis & 8.0 & S & \\
-%     \semtableend
-%     &
-%     \semtable{Spring 2017}
-%       Stat 598 & Bioinformatic/Stat Gen & 1.0 &  & \\
-%       Stat 699 & Research PhD Thesis & 8.0 &  & \\
-%     \semtableend
-%     \\
-%
-%
-%
-%   \end{tabular}
-% } % end size change
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
-\section{References}
-
-% \item \href{http://www.stat.purdue.edu/~wsc/}{Dr. William Cleveland}. \href{mailto:wsc@purdue.edu}{wsc@purdue.edu}
-%
-% \item \href{http://ryanhafen.com/}{Dr. Ryan Hafen}. \href{mailto:r.hafen@gmail.com}{rhafen@gmail.com}
-%
-% \item \href{http://had.co.nz/}{Dr. Hadley Wickham}.  \href{mailto:h.wickham@gmail.com}{h.wickham@gmail.com}
-%
-% \item \href{http://dicook.github.io/}{Dr. Dianne Cook}.  \href{mailto:dicook@monash.edu}{dicook@monash.edu}
-%
-% \item \href{https://github.com/heike}{Dr. Heike Hofmann}.  \href{mailto:hofmann@iastate.edu}{hofmann@iastate.edu}
-%
-% \item \href{https://www.linkedin.com/profile/view?id=413949}{Dr. Michael Driscoll}. \href{mailto:mike@metamarkets.com}{mike@metamarkets.com}
-
-
-\begin{cvcolumns}
-  \cvcolumn{Dr. William Cleveland}{Professor \\ Statistics, Purdue University \\ \emailsymbol \emaillink{wsc@purdue.edu}}
-  \cvcolumn{Dr. Ryan Hafen}{Hafen Consulting \\ Adjunct, Purdue University \\  \emailsymbol \emaillink{rhafen@gmail.com} }
-  \cvcolumn{Dr. Hadley Wickham}{Data Scientist \\ RStudio \\  \emailsymbol \emaillink{h.wickham@gmail.com} }
-\end{cvcolumns}
-\begin{cvcolumns}
-  \cvcolumn{Dr. Dianne Cook}{Professor \\ Monash Univeristy \\  \emailsymbol \emaillink{dicook@monash.edu} }
-  \cvcolumn{Dr. Heike Hofmann}{Professor \\ Iowa State University \\  \emailsymbol \emaillink{hofmann@iastate.edu} }
-  \cvcolumn{Dr. Michael Driscoll}{CEO \\ Metamarkets \\  \emailsymbol \emaillink{mike@metamarkets.com} }
-\end{cvcolumns}
-
-
-\clearpage
-
+% \newpage
+% \section{References}
+% \input{extra/references}
 
 \end{document}

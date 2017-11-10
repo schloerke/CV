@@ -7,3 +7,7 @@
     \item Integrated development with \pkg{lintr} and \pkg{testthat} for code and output consistency
   \end{itemize}
 }
+
+% Scatterplot matrices are limited to viewing multivariate data because they only allow pairwise plots of real-valued variables. We've re-designed the scatterplot matrix to handle other variable types, and implemented this in a new R package called Gally. GGally accepts common X vs. Y combinations of data types and makes an intelligent guess at the at the best type of pairwise plot to use, for example, mosaic plot, side-by-side boxplots, or scatterplot. The upper triangle, and lower triangle, contain different plot types for the same pair of variables which may be specified. Each sub plot may be retrieved, alterd, and/or completely replaced by a custom-produced display. The software is built upon Hadley Wickham's ggplot2 package, and builds on ideas contained in Jay Emersons gpairs plot in the YaleToolkit package. Future work will expand the offerings of composite types of displays.
+%
+% Direction from Hadley Wickham (Rice), Dianne Cook (ISU), Heike Hofmann (ISU)
