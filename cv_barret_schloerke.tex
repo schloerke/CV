@@ -2,13 +2,17 @@
 \documentclass[letterpaper, 11pt, sans]{moderncv}
 
 \usepackage[utf8]{inputenc}
-\usepackage[textwidth=7.5in, textheight=10in]{geometry}    % Width of the entire CV
+\usepackage[textwidth=7.5in, textheight=10in, footskip=20pt]{geometry}    % Width of the entire CV
 
 \usepackage{moderntimeline}
 
 \usepackage{color, graphicx}
 \tlmaxdates{2006}{2018}              % Beggining and start of your timeline
 \tlsetnotshadedfraction{0.2}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\rfoot{\footnotesize\color{gray}schloerke - \thepage  \hspace{1pt} / \pageref*{LastPage}}
 
 \input{pre/style}
 
