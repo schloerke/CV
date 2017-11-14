@@ -1,0 +1,288 @@
+% Original template layout done by: Maria Luiza Linhares Dantas
+% https://www.overleaf.com/latex/examples/moderncv-with-modern-timeline/prmmmvtvfxsn
+
+\newcommand{\pkg}[1]{\texttt{#1}}
+\renewcommand*{\cventry}[7][.25em]{%
+  \cvitem[#1]{#2}{%
+  %     {\bfseries#3}%
+    \ifthenelse{\equal{#3}{}}{}{{\bfseries#3}}%
+    %     \ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+    \ifthenelse{\equal{#4}{}}{}{\ifthenelse{\equal{#3}{}}{}{, }{\slshape#4}}%
+    \ifthenelse{\equal{#5}{}}{}{\ifthenelse{\equal{#4}{}}{\ifthenelse{\equal{#3}{}}{}{, }}{, }#5}%
+    \ifthenelse{\equal{#6}{}}{}{, #6}%
+    % .\strut%
+    \strut
+    \ifx&#7&%
+    \else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
+
+% \newcommand{\tlitem}[3]{
+%   \tlcventry{#1}{#2}{#3}
+% }
+% \xpatchcmd{\tlitem}{\{\bfseries#3\}}{}{}{}
+
+% \usepackage{ctable} % for \specialrule command
+% \newcommand{\thinline}{\specialrule{.02em}{0em}{0em}}
+
+\makeatletter
+\newcommand{\tlleftdatecventry}[7][color1]{%
+\issincefalse
+\tl@formatstartyear{#2}
+\cventry{\tikz[
+  baseline=0pt,
+  leftalign/.style={font=\scriptsize, name=leftalign, above=\tl@textstartabove, inner xsep=0pt, anchor=base west}]{
+    \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidth,\tl@runningwidth);
+    \fill [#1] (0,0)
+       ++(\tl@startfraction*\hintscolumnwidth,0pt)
+       node {$\bullet$}
+       (0pt, 0pt)
+       node [leftalign] {#2};
+  }%
+}%
+{#3}{#4}{#5}{#6}{#7}
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tlrightdatecventry}[7][color1]{%
+\issincefalse
+\tl@formatstartyear{#2}
+\cventry{\tikz[
+  baseline=0pt,
+  rightalign/.style={font=\scriptsize, name=rightalign, above=\tl@textstartabove, inner xsep=0pt, anchor=base east}]{
+    \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidth,\tl@runningwidth);
+    \fill [#1] (0,0)
+       ++(\tl@startfraction*\hintscolumnwidth,0pt)
+       node {$\bullet$}
+       (\hintscolumnwidth,0pt)
+       node [rightalign] {#2};
+  }%
+}%
+{#3}{#4}{#5}{#6}{#7}
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tlbachelorentry}[9][color1]{%
+  \tl@formatendyear{#3}
+  \tl@formatstartyear{#2}
+   \cventry{\tikz[baseline=0pt, bachelorend/.style={font=\scriptsize, name=bachelor, below, inner xsep=0pt,anchor=north west}]{
+      \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+      \fill [\tl@runningcolor] (0,0)
+         rectangle (\hintscolumnwidth,\tl@runningwidth);
+      \fill [#1] (0,0)
+         ++(\tl@startfraction*\hintscolumnwidth,0pt)
+         rectangle (\tl@startfraction*\hintscolumnwidth,\tl@width-1pt);
+      \fill [#1] (0,0)
+         node [tl@startyear] {#4}
+         (0pt,\tl@width-1pt)
+         node [bachelorend] {#5};
+      \ifissince
+         \newdimen\fullcolorwidth
+         \pgfmathsetlength\fullcolorwidth{\tl@startfraction*(1+(1-\tl@startfraction)*\tl@nsfrac)*\hintscolumnwidth}
+         \shade [left color=#1,right color=#1]
+  (\tl@startfraction*\hintscolumnwidth,0)
+             rectangle (\fullcolorwidth,\tl@width);
+         \shade [left color=#1] (\fullcolorwidth,0)
+             rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+      \else
+         \fill [#1] (\tl@startfraction*\hintscolumnwidth,0)
+             rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+      \fi
+      }%
+  }%
+  {#6}{#7}{#8}{#9}{}
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tlrightcventry}[8][color1]{%
+%    \end{macrocode}
+%    \begin{macrocode}
+\tl@formatendyear{#3}
+\tl@formatstartyear{#2}
+ \cventry{\tikz[
+  baseline=0pt,
+  rightaligned/.style={font=\scriptsize, name=tl@startyear, above=\tl@textstartabove, inner xsep=0pt, anchor=base east}
+  ]{
+    \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidth,\tl@runningwidth);
+    \fill [#1] (0,0)
+       (\tl@startfraction*\hintscolumnwidth,0pt)
+       rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width-1pt);
+    \fill [#1] (0,0)
+       (\hintscolumnwidth,0pt)
+       node [rightaligned] {\tl@startlabel}
+       (\tl@endfraction*\hintscolumnwidth,\tl@width-1pt)
+       node [tl@endyear] {\tl@endlabel};
+    \ifissince
+       \newdimen\fullcolorwidth
+       \pgfmathsetlength\fullcolorwidth{\tl@startfraction*(1+(1-\tl@startfraction)*\tl@nsfrac)*\hintscolumnwidth}
+       \shade [left color=#1,right color=#1]
+(\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\fullcolorwidth,\tl@width);
+       \shade [left color=#1] (\fullcolorwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \else
+       \fill [#1] (\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \fi
+    }%
+}%
+{#4}{#5}{#6}{#7}{#8}%
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tlleftcventry}[8][color1]{%
+%    \end{macrocode}
+%    \begin{macrocode}
+\tl@formatendyear{#3}
+\tl@formatstartyear{#2}
+ \cventry{\tikz[
+  baseline=0pt,
+  leftaligned/.style={font=\scriptsize, name=tl@endyear, below, inner xsep=0pt, anchor=north west}
+  ]{
+    \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidth,\tl@runningwidth);
+    \fill [#1] (0,0)
+       (\tl@startfraction*\hintscolumnwidth,0pt)
+       rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width-1pt);
+    \fill [#1] (0,0)
+       (\tl@startfraction*\hintscolumnwidth,0pt)
+       node [tl@startyear] {\tl@startlabel}
+       (0,\tl@width-1pt)
+       node [leftaligned] {\tl@endlabel};
+    \ifissince
+       \newdimen\fullcolorwidth
+       \pgfmathsetlength\fullcolorwidth{\tl@startfraction*(1+(1-\tl@startfraction)*\tl@nsfrac)*\hintscolumnwidth}
+       \shade [left color=#1,right color=#1]
+(\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\fullcolorwidth,\tl@width);
+       \shade [left color=#1] (\fullcolorwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \else
+       \fill [#1] (\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \fi
+    }%
+}%
+{#4}{#5}{#6}{#7}{#8}%
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tltacventry}[8][color1]{%
+%    \end{macrocode}
+%    \begin{macrocode}
+\tl@formatendyear{#3}
+\tl@formatstartyear{#2}
+ \cventry{\tikz[
+  baseline=0pt,
+  rightaligned/.style={font=\scriptsize, name=tl@startyear, above=\tl@textstartabove, inner xsep=0pt, anchor=base east}
+  ]{
+    \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+    \fill [\tl@runningcolor] (0,0)
+       rectangle (\hintscolumnwidth,\tl@runningwidth);
+    \fill [#1] (0,0)
+       (\tl@startfraction*\hintscolumnwidth,0pt)
+       rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width-1pt);
+    \fill [#1] (0,0)
+       (\hintscolumnwidth,0pt)
+       node [rightaligned] {\tl@startlabel}
+      %  (\tl@endfraction*\hintscolumnwidth,\tl@width-1pt)
+      %  node [tl@endyear] {\tl@endlabel}
+       ;
+    \ifissince
+       \newdimen\fullcolorwidth
+       \pgfmathsetlength\fullcolorwidth{\tl@startfraction*(1+(1-\tl@startfraction)*\tl@nsfrac)*\hintscolumnwidth}
+       \shade [left color=#1,right color=#1]
+(\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\fullcolorwidth,\tl@width);
+       \shade [left color=#1] (\fullcolorwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \else
+       \fill [#1] (\tl@startfraction*\hintscolumnwidth,0)
+           rectangle (\tl@endfraction*\hintscolumnwidth,\tl@width);
+    \fi
+    }%
+}%
+{#4}{#5}{#6}{#7}{#8}%
+}
+\makeatother
+
+\makeatletter
+\newcommand{\tldoubledatecventry}[8][color1]{
+  \issincefalse
+  \tl@formatstartyear{#2}
+  \tl@formatendyear{#3}
+  \cventry{\tikz[baseline=0pt]{
+      \useasboundingbox (0,-1.5ex) rectangle (\hintscolumnwidth,1ex);
+      \fill [\tl@runningcolor] (0,0)
+         rectangle (\hintscolumnwidth,\tl@runningwidth);
+      \fill [#1] (0,0)
+         ++(\tl@startfraction*\hintscolumnwidth,0pt)
+         node [tl@singleyear] {\tl@startlabel}
+         node {$\bullet$};
+      \fill [#1] (0,0)
+         ++(\tl@endfraction*\hintscolumnwidth,0pt)
+         node [tl@singleyear] {\tl@endlabel}
+         node {$\bullet$};
+    }
+  }
+  {#4}{#5}{#6}{#7}{#8}
+}
+\makeatother
+
+\makeatletter
+\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+\makeatother
+
+
+% \definecolor{dark-blue}{rgb}{0, 0.09777, 0.55}
+\definecolor{dark-blue}{rgb}{0.0627, 0.1019, 0.5455}
+% \definecolor{dark-red}{cmyk}{#721A0E}
+
+
+% \newcommand{\cvreferencecolumn}[2]{%
+%   \cvitem[0.8em]{}{%
+%     \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#1\end{minipage}%
+%     \hfill%
+%     \begin{minipage}[t]{\listdoubleitemmaincolumnwidth}#2\end{minipage}%
+%     }%
+% }
+%
+% \newcommand{\cvreference}[8]{%
+%     \textbf{#1}\newline% Name
+%     \ifthenelse{\equal{#2}{}}{}{\addresssymbol~#2\newline}%
+%     \ifthenelse{\equal{#3}{}}{}{#3\newline}%
+%     \ifthenelse{\equal{#4}{}}{}{#4\newline}%
+%     \ifthenelse{\equal{#5}{}}{}{#5\newline}%
+%     \ifthenelse{\equal{#6}{}}{}{\emailsymbol~\texttt{\href{mailto:#6}{\nolinkurl{#6}}}\newline}%
+%     \ifthenelse{\equal{#7}{}}{}{\phonesymbol~#7\newline}
+%     \ifthenelse{\equal{#8}{}}{}{\mobilephonesymbol~#8}}
+
+% % List of journals that I may need to use in the bibtex file
+% \def\aj{AJ}
+% \def\araa{ARA\&A}
+% \def\apj{ApJ}
+% \def\apjl{ApJ}
+% \def\apjs{ApJS}
+% \def\apss{Ap\&SS}
+% \def\aap{A\&A}
+% \def\aapr{A\&A~Rev.}
+% \def\aaps{A\&AS}
+% \def\mnras{MNRAS}
+% \def\pasp{PASP}
+% \def\pasj{PASJ}
+% \def\qjras{QJRAS}
+% \def\nat{Nature}
+% \def\aplett{Astrophys.~Lett.}
+% \def\aas{AAS}
+% \def\solphys{Solar Physics}
+% \def\memsai{Mem.~Soc.~Astron.~Italiana}
